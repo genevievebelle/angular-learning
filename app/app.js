@@ -11,14 +11,15 @@ config(['$routeProvider', function($routeProvider) {
 
 
 myApp.factory('repoFactory', function repoFactory ($rootScope, $http) {
-   var exports = {};
+  var exports = {};
 
-   exports.getRepos = function (userName) {
-    return $http({method: 'GET', url: 'https://api.github.com/users/kibo007/repos'})
-      .success(function(data, status, headers, config) {
-        console.log(data)
+  exports.getRepos = function (userName) {
+
+    return $http({method: 'GET', url: 'https://api.github.com/users/'+userName+'/repos'})
+      .success(function(data, status) {
+        console.log('The request was successful!', data);
       })
-      .error(function(data, status, headers, config) {
+      .error(function(data, status) {
         console.log('There was an error!', data);
       });
     };
@@ -27,14 +28,20 @@ myApp.factory('repoFactory', function repoFactory ($rootScope, $http) {
 });
 
 myApp.controller('mainController', function ($scope, repoFactory) {
-  $scope.title = "Angular Test App"
 
-  $scope.formData = {};
+  $scope.formData = {}
 
-  repoFactory.getRepos()
-    .success(function(jsonData, statusCode) {
-      console.log('The request was successful!', statusCode, jsonData);
+  $scope.getRepos = function() {
+    var userName = $scope.formData.text
 
-      $scope.repos = jsonData;
-  });
+    repoFactory.getRepos(userName)
+      .success(function(jsonData, statusCode) {
+        $scope.formData = {};
+        if (jsonData.length == 0) {
+          console.log("EMPTY")
+        } else {
+          $scope.repos = jsonData;
+        }
+    });
+  }
 });
