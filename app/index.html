@@ -18,7 +18,7 @@
 <body ng-controller="mainController">
   <div class="container">
 
-    <h1>Angular Test App</h1>
+    <h1>{{ title }}</h1>
     <div id="user-name-input-form" class="row">
         <div class="col-sm-8 col-sm-offset-2 text-center">
             <form>
@@ -27,7 +27,7 @@
                     <input type="text" class="form-control input-lg text-center" placeholder="enter a github username" ng-model="formData.text">
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="">GO!</button>
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="getRepos()">GO!</button>
             </form>
         </div>
     </div>
