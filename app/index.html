@@ -18,30 +18,29 @@
 <body ng-controller="mainController">
   <div class="container">
 
-    <h1>{{ title }}</h1>
+    <h1>Angular Test App</h1>
     <div id="user-name-input-form" class="row">
-        <div class="col-sm-8 col-sm-offset-2 text-center">
-            <form>
-                <div class="form-group">
-
-                    <input type="text" class="form-control input-lg text-center" placeholder="enter a github username" ng-model="formData.text">
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="getRepos()">GO!</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="repo-list" class="row">
-      <div class="col-sm-4 col-sm-offset-4">
-
-          <ul class="repo-list" ng-repeat="repo in repos">
-              <li><a href = {{ repo.href}}>{{repo.name}}</a><li>
-          </ul>
-
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <form>
+          <div class="input-group">
+            <input type="text" class="form-control input-lg" placeholder="enter a github username" ng-model="formData.text">
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-primary btn-lg" ng-click="getRepos()">GO!</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
 
+    <div class="row">
+      <div id="repo-list" class="col-sm-6 col-centered">
+
+        <ul class="repo-list">
+            <li ng-repeat="repo in repos" ><a ng-href = " {{ repo.html_url }} " >{{repo.name}}</a><li>
+        </ul>
+
+      </div>
+    </div>
   </div>
 
   <!--[if lt IE 7]>
