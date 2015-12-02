@@ -35,4 +35,15 @@ h1, h2, h3, h4, h5, h6 {
 
 ul {
   list-style: none;
+  padding: 10px 0
+}
+
+.row-centered {
+  text-align:center;
+}
+.col-centered {
+  display: inline-block;
+  float: none;
+  text-align:left;
+  margin-right:-4px;
 }

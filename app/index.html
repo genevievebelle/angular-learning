@@ -32,13 +32,15 @@
       </div>
     </div>
 
-    <div class="row">
-      <div id="repo-list" class="col-sm-6 col-centered">
+    <div class="container">
+      <div class="row row-centered">
+        <div id="repo-list" class="col-sm-8 col-centered">
 
-        <ul class="repo-list">
-            <li ng-repeat="repo in repos" ><a ng-href = " {{ repo.html_url }} " >{{repo.name}}</a><li>
-        </ul>
+          <ul class="repo-list">
+              <li ng-repeat="repo in repos" ><a ng-href = " {{ repo.html_url }} " >{{repo.name}}</a><li>
+          </ul>
 
+        </div>
       </div>
     </div>
   </div>
